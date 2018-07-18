@@ -3,25 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:ig="http://schemas.infragistics.com/xaml"
         xmlns:local="clr-namespace:WPFExtensionDemo"
-        xmlns:xamGridExtension="clr-namespace:IGExtension.WPF.XamGrid;assembly=IGWPFExtensions"
         mc:Ignorable="d"
-        Title="MainWindow" WindowState="Maximized">
-    <Grid>
-        <ig:XamGrid ItemsSource="{Binding Data.DefaultView}" ColumnWidth="*" AutoGenerateColumns="False"
-                    DataObjectRequested="XamGrid_DataObjectRequested">
-            <ig:XamGrid.FilteringSettings>
-                <ig:FilteringSettings AllowFiltering="FilterRowTop"/>
-            </ig:XamGrid.FilteringSettings>
-            <ig:XamGrid.Columns>
-                <ig:TextColumn Key="Column0" Width="100"/>
-                <ig:TextColumn Key="Column1" Width="100"/>
-                <ig:TextColumn Key="Column2" Width="*" IsResizable="False"/>
-                <xamGridExtension:TextColumnLeftResize Key="Column3" IsFixed="Right" Width="100"/>
-                <xamGridExtension:TextColumnLeftResize Key="Column4" IsFixed="Right" Width="100"/>
-                <xamGridExtension:TextColumnLeftResize Key="Column5" IsFixed="Right" Width="100"/>
-            </ig:XamGrid.Columns>
-        </ig:XamGrid>
-    </Grid>
+        Title="MainWindow" Height="300" Width="300">
+    <StackPanel>
+        <Button Content="XamGridDemo" Click="SampleLauncherButton_Click"/>
+        <Button Content="XamDataGridDemo" Click="SampleLauncherButton_Click"/>
+    </StackPanel>
 </Window>

@@ -11,25 +11,28 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WPFExtensionDemo.Data;
 
 namespace WPFExtensionDemo
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for XamDataGridDemo.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class XamDataGridDemo : Window
     {
-        public MainWindow()
+        public XamDataGridDemo()
         {
             InitializeComponent();
+            this.DataContext = new MainViewModel();
         }
-
-        private void SampleLauncherButton_Click(object sender, RoutedEventArgs e)
+        private class MainViewModel
         {
-            string sampleName = ((Button) sender).Content.ToString();
-            Type sampleType = this.GetType().Assembly.GetType("WPFExtensionDemo." + sampleName);
-            Window sample = Activator.CreateInstance(sampleType) as Window;
-            sample.Show();
+            public MainViewModel()
+            {
+                Items = new Departments(15, 5);
+            }
+
+            public Departments Items { get; set; }
         }
     }
 }

@@ -1,0 +1,61 @@
+﻿<Window x:Class="WPFExtensionDemo.XamDataGridDemo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:igDP="http://infragistics.com/DataPresenter" 
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:xamDataGridExtension="clr-namespace:IGExtension.WPF.XamDataGrid;assembly=IGWPFExtensions"
+        xmlns:local="clr-namespace:WPFExtensionDemo"
+        mc:Ignorable="d"
+        Title="XamDataGridDemo" Height="300" Width="300">
+    <Grid>
+        <igDP:XamDataGrid
+            DataSource="{Binding Items}"
+            IsSynchronizedWithCurrentItem="True"
+            GroupByAreaLocation="None">
+            <i:Interaction.Behaviors>
+                <xamDataGridExtension:XamDataGridDragDropRecordMovingBehavior>
+                    <xamDataGridExtension:XamDataGridDragDropRecordMovingBehavior.DragTemplate>
+                        <DataTemplate>
+                            <igDP:XamDataGrid DataSource="{Binding Data.Items}" GroupByAreaLocation="None">
+                                <igDP:XamDataGrid.FieldLayoutSettings>
+                                    <igDP:FieldLayoutSettings LabelLocation="Hidden"/>
+                                </igDP:XamDataGrid.FieldLayoutSettings>
+                            </igDP:XamDataGrid>
+                        </DataTemplate>
+                    </xamDataGridExtension:XamDataGridDragDropRecordMovingBehavior.DragTemplate>
+                </xamDataGridExtension:XamDataGridDragDropRecordMovingBehavior>
+            </i:Interaction.Behaviors>
+            <igDP:XamDataGrid.FieldLayoutSettings>
+                <igDP:FieldLayoutSettings
+                    AllowAddNew="False"
+                    AllowDelete="False"
+                    AllowFieldMoving="No"
+                    AllowRecordFixing="No"
+                    AutoGenerateFields="True"
+                    DataRecordSizingMode="SizedToContentAndFixed"
+                    SupportDataErrorInfo="CellsOnly"
+                    DataErrorDisplayMode="ErrorIconAndHighlight"
+                    HighlightAlternateRecords="True"
+                    RecordSelectorLocation="Default"
+                    SelectionTypeCell="Single"
+                    SelectionTypeField="Single"
+                    SelectionTypeRecord="Extended" />
+            </igDP:XamDataGrid.FieldLayoutSettings>
+
+            <igDP:XamDataGrid.FieldSettings>
+                <igDP:FieldSettings
+                    AllowFixing="No"
+                    AllowEdit="False"
+                    AllowGroupBy="False"
+                    AllowHiding="Never"
+                    AllowRecordFiltering="False"
+                    AllowResize="False"
+                    AllowSummaries="False"
+                    LabelClickAction="Nothing"
+                    CellClickAction="SelectRecord" />
+            </igDP:XamDataGrid.FieldSettings>
+        </igDP:XamDataGrid>
+    </Grid>
+</Window>
